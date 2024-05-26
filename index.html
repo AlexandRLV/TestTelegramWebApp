@@ -36,26 +36,33 @@
     <button id="sendMessage">Получить сообщение</button>
 
     <script>
-        // Подключаем Telegram Web Apps SDK
-        Telegram.WebApp.ready();
+        // Проверка, что объект Telegram доступен
+        if (typeof Telegram !== 'undefined') {
+            // Подключаем Telegram Web Apps SDK
+            Telegram.WebApp.ready();
 
-        const messages = [
-            "Привет! Как ваши дела?",
-            "Добро пожаловать в наше приложение!",
-            "Хорошего дня!",
-            "Рады видеть вас здесь!",
-            "Надеемся, у вас все хорошо!",
-            "Здорово, что вы с нами!"
-        ];
+            const messages = [
+                "Привет! Как ваши дела?",
+                "Добро пожаловать в наше приложение!",
+                "Хорошего дня!",
+                "Рады видеть вас здесь!",
+                "Надеемся, у вас все хорошо!",
+                "Здорово, что вы с нами!"
+            ];
 
-        const sendMessageButton = document.getElementById('sendMessage');
-        const messageDiv = document.getElementById('message');
+            const sendMessageButton = document.getElementById('sendMessage');
+            const messageDiv = document.getElementById('message');
 
-        sendMessageButton.addEventListener('click', () => {
-            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-            messageDiv.innerText = randomMessage;
-            Telegram.WebApp.sendData(randomMessage);  // Отправляем сообщение обратно в Telegram
-        });
+            sendMessageButton.addEventListener('click', () => {
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                messageDiv.innerText = randomMessage;
+
+                console.log("Отправка данных в Telegram:", randomMessage);
+                Telegram.WebApp.sendData(randomMessage);  // Отправляем сообщение обратно в Telegram
+            });
+        } else {
+            console.error("Telegram Web Apps SDK не загружен.");
+        }
     </script>
 </body>
 </html>
