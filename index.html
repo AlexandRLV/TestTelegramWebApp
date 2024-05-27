@@ -35,7 +35,9 @@
     <div id="message">Нажмите кнопку, чтобы получить приветственное сообщение!</div>
     <button id="sendMessage">Получить сообщение</button>
 
+    <!-- Подключение Telegram Web Apps SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+
     <script>
         // Проверка, что объект Telegram доступен
         if (typeof Telegram !== 'undefined') {
@@ -62,6 +64,7 @@
                 Telegram.WebApp.sendData(randomMessage);  // Отправляем сообщение обратно в Telegram
             });
         } else {
+            document.getElementById('message').innerText = "Telegram Web Apps SDK не загружен.";
             console.error("Telegram Web Apps SDK не загружен.");
         }
     </script>
