@@ -39,6 +39,7 @@ jobs:
         username: ${{ secrets.DEPLOY_USERNAME }}
         password: ${{ secrets.DEPLOY_PASSWORD }}
         script: |
+          sudo systemctl stop rariaden-hub-game-bot.service
           cd /home/telegramGame/
           rm -r ./botBuild
           mkdir ./botBuild
@@ -50,3 +51,4 @@ jobs:
           mv ./bot /home/telegramGame/botBuild/bot
           cd /home/telegramGame
           rm -r ./temp
+          sudo systemctl start rariaden-hub-game-bot.service
