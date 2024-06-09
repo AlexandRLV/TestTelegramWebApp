@@ -46,7 +46,4 @@ jobs:
           unzip ./archives/telegram-game-bot.zip -d ./temp
           cd ./temp
           pyinstaller --onefile bot.py
-          cd ./dist
-          mv ./main /home/telegramGame/botBuild/main
-          cd /home/telegramGame
-          rm -r ./temp
+          
