@@ -51,5 +51,5 @@ jobs:
           cd ./dist
           mv ./bot /home/telegramGame/botBuild/bot
           cd /home/telegramGame
-          rm -r ./temp
+          
           sudo systemctl start rariaden-hub-game-bot.service
