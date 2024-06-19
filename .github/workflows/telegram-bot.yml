@@ -21,7 +21,7 @@ jobs:
     
     - name: Zip file
       run: |
-        zip -r telegram-game-bot.zip bot.py
+        zip -r telegram-game-bot.zip bot.py bot-info.json
 
     - name: Copy Files to Remote Server
       uses: appleboy/scp-action@v0.1.4
