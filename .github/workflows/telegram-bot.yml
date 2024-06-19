@@ -46,6 +46,7 @@ jobs:
           mkdir ./temp
           unzip ./archives/telegram-game-bot.zip -d ./temp
           cd ./temp
+          mv ./bot-info.json /home/telegramGame/botBuild/bot/bot-info.json
           pyinstaller --onefile bot.py
           cd ./dist
           mv ./bot /home/telegramGame/botBuild/bot
