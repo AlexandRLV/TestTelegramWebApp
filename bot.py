@@ -38,9 +38,14 @@ async def handle_web_app_data(update: Update, context: CallbackContext) -> None:
 
 
 async def play_game(update: Update, context: CallbackContext) -> None:
+    with open(JSON_NAME, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    
+    game_url = data["game_url"] + "?v=" + data["game_version"]
+    
     query = update.callback_query
     if query.game_short_name == GAME_SHORT_NAME:
-        await context.bot.answer_callback_query(callback_query_id=query.id, url=GAME_URL)
+        await context.bot.answer_callback_query(callback_query_id=query.id, url=game_url)
     else:
         await context.bot.answer_callback_query(callback_query_id=query.id, text="EMPTY")
 
